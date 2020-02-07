@@ -1,18 +1,14 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.service.LibraryService;
+import com.twu.biblioteca.view.LibraryView;
 
 public class BibliotecaApp {
 
     public static void main(String[] args) {
 
-        LibraryService libraryService = new LibraryService();
-        System.out.println(libraryService.showWelcomeMessage());
+        LibraryView libraryView = new LibraryView();
+        System.out.println(libraryView.showWelcomeMessage());
         System.out.println();
-
-        for (String book: libraryService.listOfBookAssembler()) {
-            System.out.println(book);
-        }
-
+        libraryView.showMenu();
     }
 }

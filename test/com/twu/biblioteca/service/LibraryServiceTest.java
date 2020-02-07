@@ -1,6 +1,5 @@
-package com.twu.biblioteca.model;
+package com.twu.biblioteca.service;
 
-import com.twu.biblioteca.service.LibraryService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,12 +11,6 @@ public class LibraryServiceTest {
     @Before
     public void setUp(){
         libraryService = new LibraryService();
-    }
-
-    @Test
-    public void shouldShowWelcomeMessage(){
-        Assert.assertEquals("Welcome to Biblioteca. Your one-stop-shop for great " +
-                "book titles in Bangalore!", libraryService.showWelcomeMessage());
     }
 
     @Test

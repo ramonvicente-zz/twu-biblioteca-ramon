@@ -5,13 +5,8 @@ import com.twu.biblioteca.model.Book;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 public class LibraryService {
-
-    public String showWelcomeMessage(){
-        return "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
-    }
 
     public List<Book> listOfBooks(){
         return Arrays.asList(new Book("The Hobbit", "J.R.R. Tolkien", 1937),
