@@ -20,6 +20,7 @@ public class LibraryView {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Select an option:");
         System.out.println("1 - List of Books");
+        System.out.println("2 - Exit application");
         int menuOption = scanner.nextInt();
 
         switch (menuOption){
@@ -27,6 +28,9 @@ public class LibraryView {
                 for (String book : libraryService.listOfBookAssembler()) {
                     System.out.println(book);
                 }
+                showMenu();
+                break;
+            case 2:
                 break;
             default:
                 System.out.println(invalidMenuOptionMessage());
