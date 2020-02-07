@@ -12,7 +12,7 @@ public class LibraryView {
         libraryService = new LibraryService();
     }
 
-    public String showWelcomeMessage(){
+    public String welcomeMessage(){
         return "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
     }
 
@@ -29,8 +29,12 @@ public class LibraryView {
                 }
                 break;
             default:
-                System.out.println("Please select a valid option!");
+                System.out.println(invalidMenuOptionMessage());
                 showMenu();
         }
+    }
+
+    public String invalidMenuOptionMessage(){
+        return "Please select a valid option!";
     }
 }
