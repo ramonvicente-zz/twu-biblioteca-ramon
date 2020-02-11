@@ -1,5 +1,6 @@
 package com.twu.biblioteca.service;
 
+import com.twu.biblioteca.model.Book;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +16,7 @@ public class LibraryServiceTest {
 
     @Test
     public void shouldThereAreAListOfBook(){
-        Assert.assertNotNull(libraryService.listOfBooks());
+        Assert.assertNotNull(libraryService.books);
     }
 
     @Test
@@ -31,4 +32,5 @@ public class LibraryServiceTest {
 
         Assert.assertTrue(libraryService.checkOutBook(bookChosen));
     }
+
 }

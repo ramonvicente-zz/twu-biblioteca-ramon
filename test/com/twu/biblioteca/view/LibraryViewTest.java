@@ -29,8 +29,14 @@ public class LibraryViewTest {
     }
 
     @Test
-    public void shouldShowASuccessMessageWhenUserCheckOutAnExistingBook(){
+    public void shouldReturnASuccessMessageWhenUserCheckOutAnExistingBook(){
         String message = "Thank you. Enjoy the book";
         Assert.assertEquals(message, libraryView.checkoutBookSuccessMessage());
+    }
+
+    @Test
+    public void shouldReturnAUnErroMessageWhenUserCheckOutAnExistingBook(){
+        String message = "Sorry, that book is not available";
+        Assert.assertEquals(message, libraryView.checkoutBookErrorMessage());
     }
 }

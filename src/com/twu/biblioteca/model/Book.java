@@ -38,7 +38,7 @@ public class Book {
         this.publishYear = publishYear;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 

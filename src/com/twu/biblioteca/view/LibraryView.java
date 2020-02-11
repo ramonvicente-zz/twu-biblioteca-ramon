@@ -41,6 +41,8 @@ public class LibraryView {
 
                 if(libraryService.checkOutBook(bookName)){
                     System.out.println(checkoutBookSuccessMessage());
+                } else{
+                    System.out.println(checkoutBookErrorMessage());
                 }
                 showMenu();
                 break;
@@ -56,5 +58,9 @@ public class LibraryView {
 
     public String checkoutBookSuccessMessage(){
         return "Thank you. Enjoy the book";
+    }
+
+    public String checkoutBookErrorMessage(){
+        return "Sorry, that book is not available";
     }
 }
