@@ -41,8 +41,14 @@ public class LibraryViewTest {
     }
 
     @Test
-    public void shouldReturnAMessageWhenUserReturnABook(){
+    public void shouldReturnASuccessfulMessageWhenUserReturnABook(){
         String message = "Thank you for returning the book";
         Assert.assertEquals(message, libraryView.returnBookSuccessMessage());
+    }
+
+    @Test
+    public void shouldReturnAnErrorMessageWhenUserReturnAnInvalidBook(){
+        String message = "That is not a valid book to return";
+        Assert.assertEquals(message, libraryView.returnBookErrorMessage());
     }
 }

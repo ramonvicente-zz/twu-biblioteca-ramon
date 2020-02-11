@@ -54,6 +54,8 @@ public class LibraryView {
 
                 if(libraryService.returnBook(bookToBeReturned)){
                     System.out.println(returnBookSuccessMessage());
+                } else{
+                    System.out.println(returnBookErrorMessage());
                 }
                 showMenu();
                 break;
@@ -77,5 +79,9 @@ public class LibraryView {
 
     public String returnBookSuccessMessage(){
         return "Thank you for returning the book";
+    }
+
+    public String returnBookErrorMessage(){
+        return "That is not a valid book to return";
     }
 }
