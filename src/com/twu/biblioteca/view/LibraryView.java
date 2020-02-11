@@ -21,7 +21,7 @@ public class LibraryView {
         System.out.println("Select an option:");
         System.out.println(" " +
                 "0 - Exit application \n 1 - List of Books " +
-                "\n 2 - Checkout Book");
+                "\n 2 - Checkout Book \n 3 - Return Book");
         int menuOption = scanner.nextInt();
 
         switch (menuOption){
@@ -53,7 +53,7 @@ public class LibraryView {
                 String bookToBeReturned = retunBookScanner.nextLine();
 
                 if(libraryService.returnBook(bookToBeReturned)){
-                    System.out.println("Book returned");
+                    System.out.println(returnBookSuccessMessage());
                 }
                 showMenu();
                 break;
@@ -73,5 +73,9 @@ public class LibraryView {
 
     public String checkoutBookErrorMessage(){
         return "Sorry, that book is not available";
+    }
+
+    public String returnBookSuccessMessage(){
+        return "Thank you for returning the book";
     }
 }

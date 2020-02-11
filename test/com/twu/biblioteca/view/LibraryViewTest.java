@@ -39,4 +39,10 @@ public class LibraryViewTest {
         String message = "Sorry, that book is not available";
         Assert.assertEquals(message, libraryView.checkoutBookErrorMessage());
     }
+
+    @Test
+    public void shouldReturnAMessageWhenUserReturnABook(){
+        String message = "Thank you for returning the book";
+        Assert.assertEquals(message, libraryView.returnBookSuccessMessage());
+    }
 }
