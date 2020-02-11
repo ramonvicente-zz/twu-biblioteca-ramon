@@ -22,15 +22,21 @@ public class LibraryServiceTest {
     @Test
     public void shouldHaveAnSpecificBookInTheListOfBooks(){
         String book = "Neuromancer | William Gibson | 1984";
-
         Assert.assertTrue(libraryService.listOfBookAssembler().contains(book));
     }
 
     @Test
     public void shouldCustomerCheckoutASpecificBook(){
         String bookChosen = "A Clockwork Orange";
-
         Assert.assertTrue(libraryService.checkOutBook(bookChosen));
+    }
+
+    @Test
+    public void shouldCustomerReturnAChekoutedBook(){
+        String bookChosen = "A Clockwork Orange";
+        libraryService.checkOutBook(bookChosen);
+
+        Assert.assertTrue(libraryService.returnBook(bookChosen));
     }
 
 }

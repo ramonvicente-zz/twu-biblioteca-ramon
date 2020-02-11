@@ -46,6 +46,17 @@ public class LibraryView {
                 }
                 showMenu();
                 break;
+            case 3:
+                System.out.println("Type the book name:");
+
+                Scanner retunBookScanner = new Scanner(System.in);
+                String bookToBeReturned = retunBookScanner.nextLine();
+
+                if(libraryService.returnBook(bookToBeReturned)){
+                    System.out.println("Book returned");
+                }
+                showMenu();
+                break;
             default:
                 System.out.println(invalidMenuOptionMessage());
                 showMenu();

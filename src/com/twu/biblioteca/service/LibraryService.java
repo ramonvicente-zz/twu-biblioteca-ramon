@@ -48,5 +48,23 @@ public class LibraryService {
         return null;
     }
 
+    private Book searchCheckedOutBook(String bookName){
+        for (Book bookFound: books) {
+            if (bookFound.getName().equals(bookName) &&
+                    bookFound.getStatus()==false) {
+                return bookFound;
+            }
+        }
+        return null;
+    }
+
+    public boolean returnBook(String bookTyped){
+        Book bookToCheckOut = searchCheckedOutBook(bookTyped);
+        if(bookToCheckOut!=null){
+            bookToCheckOut.setStatus(true);
+            return true;
+        }
+        return false;
+    }
 
 }
