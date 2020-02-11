@@ -21,7 +21,7 @@ public class LibraryService {
         List<String> newBookList = new ArrayList<>();
 
         for (Book book:books) {
-            if(book.getStatus() == true){
+            if(book.getAvailable()) {
                 newBookList.add(book.getName() + " | " + book.getAuthor() + " | " + book.getPublishYear());
             }
         }
@@ -32,7 +32,7 @@ public class LibraryService {
     public boolean checkOutBook(String bookTyped) {
         Book bookToCheckOut = searchBook(bookTyped);
         if (bookToCheckOut != null) {
-            bookToCheckOut.setStatus(false);
+            bookToCheckOut.setAvailable(false);
             return true;
         }
         return false;
@@ -41,7 +41,7 @@ public class LibraryService {
     private Book searchBook(String bookName){
         for (Book bookFound: books) {
             if (bookFound.getName().equals(bookName) &&
-                    bookFound.getStatus()) {
+                    bookFound.getAvailable()) {
                 return bookFound;
             }
         }
@@ -51,7 +51,7 @@ public class LibraryService {
     private Book searchCheckedOutBook(String bookName) {
         for (Book bookFound: books) {
             if (bookFound.getName().equals(bookName) &&
-                    !bookFound.getStatus()) {
+                    !bookFound.getAvailable()) {
                 return bookFound;
             }
         }
@@ -61,7 +61,7 @@ public class LibraryService {
     public boolean returnBook(String bookTyped) {
         Book bookToCheckOut = searchCheckedOutBook(bookTyped);
         if (bookToCheckOut != null) {
-            bookToCheckOut.setStatus(true);
+            bookToCheckOut.setAvailable(true);
             return true;
         }
         return false;
