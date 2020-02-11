@@ -19,11 +19,14 @@ public class LibraryView {
     public void showMenu(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Select an option:");
-        System.out.println("1 - List of Books");
-        System.out.println("2 - Exit application");
+        System.out.println(" " +
+                "0 - Exit application \n 1 - List of Books " +
+                "\n 2 - Checkout Book");
         int menuOption = scanner.nextInt();
 
         switch (menuOption){
+            case 0:
+                break;
             case 1:
                 for (String book : libraryService.listOfBookAssembler()) {
                     System.out.println(book);
@@ -31,6 +34,11 @@ public class LibraryView {
                 showMenu();
                 break;
             case 2:
+                System.out.println("Type the book name:");
+                Scanner newScanner = new Scanner(System.in);
+                String bookName = newScanner.nextLine();
+                System.out.println(libraryService.checkOutBook(bookName));
+                showMenu();
                 break;
             default:
                 System.out.println(invalidMenuOptionMessage());
@@ -41,4 +49,5 @@ public class LibraryView {
     public String invalidMenuOptionMessage(){
         return "Please select a valid option!";
     }
+
 }

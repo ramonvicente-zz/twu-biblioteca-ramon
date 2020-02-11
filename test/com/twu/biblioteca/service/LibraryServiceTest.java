@@ -24,4 +24,11 @@ public class LibraryServiceTest {
 
         Assert.assertTrue(libraryService.listOfBookAssembler().contains(book));
     }
+
+    @Test
+    public void shouldCustomerCheckoutASpecificBook(){
+        String bookChosen = "A Clockwork Orange";
+
+        Assert.assertTrue(libraryService.checkOutBook(bookChosen).equals("Book Checkedout!"));
+    }
 }

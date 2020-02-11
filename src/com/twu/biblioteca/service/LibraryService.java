@@ -1,12 +1,15 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.view.LibraryView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class LibraryService {
+
+    private LibraryView libraryView;
 
     public List<Book> listOfBooks(){
         return Arrays.asList(new Book("The Hobbit", "J.R.R. Tolkien", 1937),
@@ -23,6 +26,24 @@ public class LibraryService {
         }
 
         return newBookList;
+    }
+
+    public String checkOutBook(String bookTyped){
+        Book bookToCheckOut = searchBook(bookTyped);
+        if(bookToCheckOut!=null){
+            bookToCheckOut.setStatus(false);
+            return "Book Checkedout!";
+        }
+        return "";
+    }
+
+    public Book searchBook(String bookName){
+        for (Book bookFound: listOfBooks()) {
+            if (bookFound.getName().equals(bookName)) {
+                return bookFound;
+            }
+        }
+        return null;
     }
 
 }

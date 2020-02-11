@@ -5,11 +5,13 @@ public class Book {
     private String name;
     private String author;
     private int  publishYear;
+    private boolean status;
 
     public Book(String name, String author, int publishYear) {
         this.name = name;
         this.author = author;
         this.publishYear = publishYear;
+        this.status = true;
     }
 
     public String getName() {
@@ -34,5 +36,13 @@ public class Book {
 
     public void setPublishYear(int publishYear) {
         this.publishYear = publishYear;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }
