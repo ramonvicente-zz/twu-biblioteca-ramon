@@ -27,4 +27,10 @@ public class LibraryViewTest {
 
         Assert.assertEquals(message, libraryView.invalidMenuOptionMessage());
     }
+
+    @Test
+    public void shouldShowASuccessMessageWhenUserCheckOutAnExistingBook(){
+        String message = "Thank you. Enjoy the book";
+        Assert.assertEquals(message, libraryView.checkoutBookSuccessMessage());
+    }
 }

@@ -35,9 +35,13 @@ public class LibraryView {
                 break;
             case 2:
                 System.out.println("Type the book name:");
+
                 Scanner newScanner = new Scanner(System.in);
                 String bookName = newScanner.nextLine();
-                System.out.println(libraryService.checkOutBook(bookName));
+
+                if(libraryService.checkOutBook(bookName)){
+                    System.out.println(checkoutBookSuccessMessage());
+                }
                 showMenu();
                 break;
             default:
@@ -50,4 +54,7 @@ public class LibraryView {
         return "Please select a valid option!";
     }
 
+    public String checkoutBookSuccessMessage(){
+        return "Thank you. Enjoy the book";
+    }
 }

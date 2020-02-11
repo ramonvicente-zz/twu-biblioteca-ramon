@@ -28,13 +28,13 @@ public class LibraryService {
         return newBookList;
     }
 
-    public String checkOutBook(String bookTyped){
+    public boolean checkOutBook(String bookTyped){
         Book bookToCheckOut = searchBook(bookTyped);
         if(bookToCheckOut!=null){
             bookToCheckOut.setStatus(false);
-            return "Book Checkedout!";
+            return true;
         }
-        return "";
+        return false;
     }
 
     public Book searchBook(String bookName){
@@ -45,5 +45,6 @@ public class LibraryService {
         }
         return null;
     }
+
 
 }

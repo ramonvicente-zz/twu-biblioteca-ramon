@@ -29,6 +29,6 @@ public class LibraryServiceTest {
     public void shouldCustomerCheckoutASpecificBook(){
         String bookChosen = "A Clockwork Orange";
 
-        Assert.assertTrue(libraryService.checkOutBook(bookChosen).equals("Book Checkedout!"));
+        Assert.assertTrue(libraryService.checkOutBook(bookChosen));
     }
 }
