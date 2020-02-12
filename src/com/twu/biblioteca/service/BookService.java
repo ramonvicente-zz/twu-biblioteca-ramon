@@ -8,14 +8,14 @@ import java.util.List;
 
 public class BookService {
 
-    private BookRepository libraryRepository;
+    private BookRepository bookRepository;
 
     public BookService(){
-        libraryRepository = new BookRepository();
+        bookRepository = new BookRepository();
     }
 
     public List<Book> listAllBooks(){
-        return libraryRepository.allBooks();
+        return bookRepository.allBooks();
     }
 
     public List<String> listOfBookAssembler(){
@@ -29,7 +29,7 @@ public class BookService {
     }
 
     public boolean borrowBook(String bookName) {
-        Book bookToBorrow = libraryRepository.findBook(bookName);
+        Book bookToBorrow = bookRepository.findBook(bookName);
         if (bookToBorrow != null) {
             bookToBorrow.setAvailability(false);
             return true;
@@ -38,7 +38,7 @@ public class BookService {
     }
 
     public boolean giveBookBack(String bookName) {
-        Book bookToGiveBack = libraryRepository.findCheckedOutBook(bookName);
+        Book bookToGiveBack = bookRepository.findCheckedOutBook(bookName);
         if (bookToGiveBack != null) {
             bookToGiveBack.setAvailability(true);
             return true;

@@ -1,15 +1,19 @@
 package com.twu.biblioteca.view;
 
 import com.twu.biblioteca.service.BookService;
+import com.twu.biblioteca.service.MovieService;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class LibraryView {
 
     private BookService libraryService;
+    private MovieService movieService;
 
     public LibraryView(){
         libraryService = new BookService();
+        movieService = new MovieService();
     }
 
     public String welcomeMessage(){
@@ -21,18 +25,20 @@ public class LibraryView {
         System.out.println("Select an option:");
         System.out.println(" " +
                 "0 - Exit application \n 1 - List of Books " +
-                "\n 2 - Checkout Book \n 3 - Return Book");
+                "\n 2 - Borrow Book \n 3 - Give Back Book \n 4 - Show Available Movies");
         int menuOption = scanner.nextInt();
 
         switch (menuOption){
             case 0:
                 break;
+
             case 1:
                 for (String book : libraryService.listOfBookAssembler()) {
                     System.out.println(book);
                 }
                 showMenu();
                 break;
+
             case 2:
                 System.out.println("Type the book name:");
                 Scanner newScanner = new Scanner(System.in);
@@ -41,6 +47,7 @@ public class LibraryView {
                 bookActivityTemplate(libraryService.borrowBook(bookNameToBorrow),
                         borrowBookSuccessMessage(), borrowBookErrorMessage());
                 break;
+
             case 3:
                 System.out.println("Type the book name:");
                 Scanner giveBackBookScanner = new Scanner(System.in);
@@ -49,6 +56,13 @@ public class LibraryView {
                 bookActivityTemplate(libraryService.giveBookBack(bookNameToGiveBack),
                         giveBackBookSuccessMessage(), giveBackBookErrorMessage());
                 break;
+
+            case 4:
+                System.out.println("MOVIE \t DIRECTOR \t YEAR \t RATING");
+                showAvailableMovies();
+                showMenu();
+                break;
+
             default:
                 System.out.println(invalidMenuOptionMessage());
                 showMenu();
@@ -82,5 +96,14 @@ public class LibraryView {
             System.out.println(errorMessage);
         }
         showMenu();
+    }
+
+    public void showAvailableMovies(){
+        List<String> movies = movieService.listOfAvailableMoviesAssembler(movieService.listOfAllAvailableMovies());
+        String allMovies = "";
+        for(String movie : movies){
+            allMovies += (movie + "\n");
+        }
+        System.out.println(allMovies);
     }
 }
