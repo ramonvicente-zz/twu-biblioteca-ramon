@@ -17,4 +17,10 @@ public class MovieServiceTest {
         Assert.assertEquals(movieService.listOfAllAvailableMovies().size(), 3);
     }
 
+    @Test
+    public void shouldCustomerBorrowAMovie(){
+        String movieChosen = "The Goonies";
+        Assert.assertEquals(movieService.borrowMovie(movieChosen), "Enjoy the Movie");
+    }
+
 }

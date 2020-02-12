@@ -25,7 +25,7 @@ public class LibraryView {
         System.out.println("Select an option:");
         System.out.println(" " +
                 "0 - Exit application \n 1 - List of Books " +
-                "\n 2 - Borrow Book \n 3 - Give Back Book \n 4 - Show Available Movies");
+                "\n 2 - Borrow Book \n 3 - Give Back Book \n 4 - Show Available Movies \n 5 - Borrow Movie");
         int menuOption = scanner.nextInt();
 
         switch (menuOption){
@@ -60,6 +60,15 @@ public class LibraryView {
             case 4:
                 System.out.println("MOVIE \t DIRECTOR \t YEAR \t RATING");
                 showAvailableMovies();
+                showMenu();
+                break;
+
+            case 5:
+                System.out.println("Type the movie name:");
+                Scanner movieScanner = new Scanner(System.in);
+                String movieName = movieScanner.nextLine();
+
+                System.out.println(movieService.borrowMovie(movieName));
                 showMenu();
                 break;
 

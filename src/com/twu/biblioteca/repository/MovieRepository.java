@@ -22,4 +22,14 @@ public class MovieRepository {
     public List<Movie> getAvailableMovies(){
         return movies.stream().filter(movie -> movie.isAvailability()).collect(Collectors.toList());
     }
+
+
+    public Movie findAvailableMovie(String movieName){
+        return getAvailableMovies().stream().filter(movie -> movie.getName().equals(movieName)).findFirst().orElse(null);
+    }
+
+    public void changeAvailableMovieToNotAvailable(Movie movie, boolean availability){
+        getAvailableMovies().stream().filter(foundMovie -> foundMovie.getName().equals(movie.getName())).
+                findFirst().get().setAvailability(availability);
+    }
 }

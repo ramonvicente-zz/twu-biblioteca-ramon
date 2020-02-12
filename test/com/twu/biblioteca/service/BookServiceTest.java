@@ -6,36 +6,36 @@ import org.junit.Test;
 
 public class BookServiceTest {
 
-    BookService libraryService;
+    BookService bookService;
 
     @Before
     public void setUp(){
-        libraryService = new BookService();
+        bookService = new BookService();
     }
 
     @Test
     public void shouldThereAreAListOfBook(){
-        Assert.assertNotNull(libraryService.listAllBooks());
+        Assert.assertNotNull(bookService.listAllBooks());
     }
 
     @Test
     public void shouldHaveAnSpecificBookInTheListOfBooks(){
         String book = "Neuromancer | William Gibson | 1984";
-        Assert.assertTrue(libraryService.listOfBookAssembler().contains(book));
+        Assert.assertTrue(bookService.listOfBookAssembler().contains(book));
     }
 
     @Test
     public void shouldCustomerCheckoutASpecificBook(){
         String bookChosen = "A Clockwork Orange";
-        Assert.assertTrue(libraryService.borrowBook(bookChosen));
+        Assert.assertTrue(bookService.borrowBook(bookChosen));
     }
 
    @Test
     public void shouldCustomerReturnAChekoutedBook(){
         String bookChosen = "A Clockwork Orange";
-        libraryService.borrowBook(bookChosen);
+        bookService.borrowBook(bookChosen);
 
-        Assert.assertTrue(libraryService.giveBookBack(bookChosen));
+        Assert.assertTrue(bookService.giveBookBack(bookChosen));
     }
 
 }

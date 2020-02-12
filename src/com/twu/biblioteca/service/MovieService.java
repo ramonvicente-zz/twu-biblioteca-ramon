@@ -25,4 +25,16 @@ public class MovieService {
         }
         return newMovieList;
     }
+
+    public String borrowMovie(String movieName){
+        Movie movie = movieRepository.findAvailableMovie(movieName);
+        if(movie != null)
+            movieRepository.changeAvailableMovieToNotAvailable(movie, false);
+
+        if(movie != null && !movie.isAvailability()){
+            return "Enjoy the Movie";
+        } else{
+            return "Sorry, that movie is not available";
+        }
+    }
 }
