@@ -16,7 +16,7 @@ public class LibraryServiceTest {
 
     @Test
     public void shouldThereAreAListOfBook(){
-        Assert.assertNotNull(libraryService.books);
+        Assert.assertNotNull(libraryService.listAllBooks());
     }
 
     @Test
@@ -31,7 +31,7 @@ public class LibraryServiceTest {
         Assert.assertTrue(libraryService.checkOutBook(bookChosen));
     }
 
-    @Test
+   @Test
     public void shouldCustomerReturnAChekoutedBook(){
         String bookChosen = "A Clockwork Orange";
         libraryService.checkOutBook(bookChosen);

@@ -1,6 +1,7 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.repository.LibraryRepository;
 import com.twu.biblioteca.view.LibraryView;
 
 import java.util.ArrayList;
@@ -10,17 +11,20 @@ import java.util.List;
 public class LibraryService {
 
     private LibraryView libraryView;
+    private LibraryRepository libraryRepository;
 
-    List<Book> books = Arrays.asList(new Book("The Hobbit", "J.R.R. Tolkien", 1937),
-            new Book("A Clockwork Orange", "Anthony Burgess", 1962),
-            new Book("Neuromancer", "William Gibson", 1984),
-            new Book("The Adventures of Tom Sawyer", "Mark Twain", 1876));
+    public LibraryService(){
+        libraryRepository = new LibraryRepository();
+    }
 
+    public List<Book> listAllBooks(){
+        return libraryRepository.allBooks();
+    }
 
     public List<String> listOfBookAssembler(){
         List<String> newBookList = new ArrayList<>();
 
-        for (Book book:books) {
+        for (Book book : listAllBooks()) {
             if(book.getAvailable()) {
                 newBookList.add(book.getName() + " | " + book.getAuthor() + " | " + book.getPublishYear());
             }
@@ -29,8 +33,8 @@ public class LibraryService {
         return newBookList;
     }
 
-    public boolean checkOutBook(String bookTyped) {
-        Book bookToCheckOut = searchBook(bookTyped);
+    public boolean checkOutBook(String bookName) {
+        Book bookToCheckOut = libraryRepository.findBook(bookName);
         if (bookToCheckOut != null) {
             bookToCheckOut.setAvailable(false);
             return true;
@@ -38,33 +42,12 @@ public class LibraryService {
         return false;
     }
 
-    private Book searchBook(String bookName){
-        for (Book bookFound: books) {
-            if (bookFound.getName().equals(bookName) &&
-                    bookFound.getAvailable()) {
-                return bookFound;
-            }
-        }
-        return null;
-    }
-
-    private Book searchCheckedOutBook(String bookName) {
-        for (Book bookFound: books) {
-            if (bookFound.getName().equals(bookName) &&
-                    !bookFound.getAvailable()) {
-                return bookFound;
-            }
-        }
-        return null;
-    }
-
-    public boolean returnBook(String bookTyped) {
-        Book bookToCheckOut = searchCheckedOutBook(bookTyped);
+    public boolean returnBook(String bookName) {
+        Book bookToCheckOut = libraryRepository.findCheckedOutBook(bookName);
         if (bookToCheckOut != null) {
             bookToCheckOut.setAvailable(true);
             return true;
         }
         return false;
     }
-
 }
