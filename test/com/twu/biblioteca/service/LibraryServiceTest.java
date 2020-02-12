@@ -1,6 +1,5 @@
 package com.twu.biblioteca.service;
 
-import com.twu.biblioteca.model.Book;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,15 +27,15 @@ public class LibraryServiceTest {
     @Test
     public void shouldCustomerCheckoutASpecificBook(){
         String bookChosen = "A Clockwork Orange";
-        Assert.assertTrue(libraryService.checkOutBook(bookChosen));
+        Assert.assertTrue(libraryService.borrowBook(bookChosen));
     }
 
    @Test
     public void shouldCustomerReturnAChekoutedBook(){
         String bookChosen = "A Clockwork Orange";
-        libraryService.checkOutBook(bookChosen);
+        libraryService.borrowBook(bookChosen);
 
-        Assert.assertTrue(libraryService.returnBook(bookChosen));
+        Assert.assertTrue(libraryService.giveBookBack(bookChosen));
     }
 
 }

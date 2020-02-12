@@ -5,12 +5,10 @@ import com.twu.biblioteca.repository.LibraryRepository;
 import com.twu.biblioteca.view.LibraryView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class LibraryService {
 
-    private LibraryView libraryView;
     private LibraryRepository libraryRepository;
 
     public LibraryService(){
@@ -23,29 +21,27 @@ public class LibraryService {
 
     public List<String> listOfBookAssembler(){
         List<String> newBookList = new ArrayList<>();
-
         for (Book book : listAllBooks()) {
-            if(book.getAvailable()) {
+            if(book.getAvailability()) {
                 newBookList.add(book.getName() + " | " + book.getAuthor() + " | " + book.getPublishYear());
             }
         }
-
         return newBookList;
     }
 
-    public boolean checkOutBook(String bookName) {
-        Book bookToCheckOut = libraryRepository.findBook(bookName);
-        if (bookToCheckOut != null) {
-            bookToCheckOut.setAvailable(false);
+    public boolean borrowBook(String bookName) {
+        Book bookToBorrow = libraryRepository.findBook(bookName);
+        if (bookToBorrow != null) {
+            bookToBorrow.setAvailability(false);
             return true;
         }
         return false;
     }
 
-    public boolean returnBook(String bookName) {
-        Book bookToCheckOut = libraryRepository.findCheckedOutBook(bookName);
-        if (bookToCheckOut != null) {
-            bookToCheckOut.setAvailable(true);
+    public boolean giveBookBack(String bookName) {
+        Book bookToGiveBack = libraryRepository.findCheckedOutBook(bookName);
+        if (bookToGiveBack != null) {
+            bookToGiveBack.setAvailability(true);
             return true;
         }
         return false;

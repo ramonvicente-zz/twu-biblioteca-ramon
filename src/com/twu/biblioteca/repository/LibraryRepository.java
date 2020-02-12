@@ -23,7 +23,7 @@ public class LibraryRepository {
     public Book findBook(String bookName){
         for (Book bookFound: books) {
             if (bookFound.getName().equals(bookName) &&
-                    bookFound.getAvailable()) {
+                    bookFound.getAvailability()) {
                 return bookFound;
             }
         }
@@ -33,7 +33,7 @@ public class LibraryRepository {
     public Book findCheckedOutBook(String bookName){
         for (Book bookFound: books) {
             if (bookFound.getName().equals(bookName) &&
-                    !bookFound.getAvailable()) {
+                    !bookFound.getAvailability()) {
                 return bookFound;
             }
         }

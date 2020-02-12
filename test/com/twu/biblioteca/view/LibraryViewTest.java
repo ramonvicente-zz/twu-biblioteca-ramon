@@ -31,24 +31,24 @@ public class LibraryViewTest {
     @Test
     public void shouldReturnASuccessMessageWhenUserCheckOutAnExistingBook(){
         String message = "Thank you. Enjoy the book";
-        Assert.assertEquals(message, libraryView.checkoutBookSuccessMessage());
+        Assert.assertEquals(message, libraryView.borrowBookSuccessMessage());
     }
 
     @Test
     public void shouldReturnAUnErroMessageWhenUserCheckOutAnExistingBook(){
         String message = "Sorry, that book is not available";
-        Assert.assertEquals(message, libraryView.checkoutBookErrorMessage());
+        Assert.assertEquals(message, libraryView.borrowBookErrorMessage());
     }
 
     @Test
     public void shouldReturnASuccessfulMessageWhenUserReturnABook(){
         String message = "Thank you for returning the book";
-        Assert.assertEquals(message, libraryView.returnBookSuccessMessage());
+        Assert.assertEquals(message, libraryView.giveBackBookSuccessMessage());
     }
 
     @Test
     public void shouldReturnAnErrorMessageWhenUserReturnAnInvalidBook(){
         String message = "That is not a valid book to return";
-        Assert.assertEquals(message, libraryView.returnBookErrorMessage());
+        Assert.assertEquals(message, libraryView.giveBackBookErrorMessage());
     }
 }

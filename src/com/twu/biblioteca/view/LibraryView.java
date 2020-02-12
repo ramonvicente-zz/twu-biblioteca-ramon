@@ -35,29 +35,19 @@ public class LibraryView {
                 break;
             case 2:
                 System.out.println("Type the book name:");
-
                 Scanner newScanner = new Scanner(System.in);
-                String bookName = newScanner.nextLine();
+                String bookNameToBorrow = newScanner.nextLine();
 
-                if(libraryService.checkOutBook(bookName)){
-                    System.out.println(checkoutBookSuccessMessage());
-                } else{
-                    System.out.println(checkoutBookErrorMessage());
-                }
-                showMenu();
+                bookActivityTemplate(libraryService.borrowBook(bookNameToBorrow),
+                        borrowBookSuccessMessage(), borrowBookErrorMessage());
                 break;
             case 3:
                 System.out.println("Type the book name:");
+                Scanner giveBackBookScanner = new Scanner(System.in);
+                String bookNameToGiveBack = giveBackBookScanner.nextLine();
 
-                Scanner retunBookScanner = new Scanner(System.in);
-                String bookToBeReturned = retunBookScanner.nextLine();
-
-                if(libraryService.returnBook(bookToBeReturned)){
-                    System.out.println(returnBookSuccessMessage());
-                } else{
-                    System.out.println(returnBookErrorMessage());
-                }
-                showMenu();
+                bookActivityTemplate(libraryService.giveBookBack(bookNameToGiveBack),
+                        giveBackBookSuccessMessage(), giveBackBookErrorMessage());
                 break;
             default:
                 System.out.println(invalidMenuOptionMessage());
@@ -69,19 +59,28 @@ public class LibraryView {
         return "Please select a valid option!";
     }
 
-    public String checkoutBookSuccessMessage(){
+    public String borrowBookSuccessMessage(){
         return "Thank you. Enjoy the book";
     }
 
-    public String checkoutBookErrorMessage(){
+    public String borrowBookErrorMessage(){
         return "Sorry, that book is not available";
     }
 
-    public String returnBookSuccessMessage(){
+    public String giveBackBookSuccessMessage(){
         return "Thank you for returning the book";
     }
 
-    public String returnBookErrorMessage(){
+    public String giveBackBookErrorMessage(){
         return "That is not a valid book to return";
+    }
+
+    public void bookActivityTemplate(boolean bookActivity, String successMessage, String errorMessage){
+        if(bookActivity){
+            System.out.println(successMessage);
+        } else{
+            System.out.println(errorMessage);
+        }
+        showMenu();
     }
 }
