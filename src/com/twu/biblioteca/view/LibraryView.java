@@ -1,15 +1,15 @@
 package com.twu.biblioteca.view;
 
-import com.twu.biblioteca.service.LibraryService;
+import com.twu.biblioteca.service.BookService;
 
 import java.util.Scanner;
 
 public class LibraryView {
 
-    private LibraryService libraryService;
+    private BookService libraryService;
 
     public LibraryView(){
-        libraryService = new LibraryService();
+        libraryService = new BookService();
     }
 
     public String welcomeMessage(){

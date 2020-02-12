@@ -5,11 +5,11 @@ import com.twu.biblioteca.model.Book;
 import java.util.Arrays;
 import java.util.List;
 
-public class LibraryRepository {
+public class BookRepository {
 
     List<Book> books;
 
-    public LibraryRepository(){
+    public BookRepository(){
         books = Arrays.asList(new Book("The Hobbit", "J.R.R. Tolkien", 1937),
                 new Book("A Clockwork Orange", "Anthony Burgess", 1962),
                 new Book("Neuromancer", "William Gibson", 1984),

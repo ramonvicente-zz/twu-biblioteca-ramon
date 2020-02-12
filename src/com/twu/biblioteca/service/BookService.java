@@ -1,18 +1,17 @@
 package com.twu.biblioteca.service;
 
 import com.twu.biblioteca.model.Book;
-import com.twu.biblioteca.repository.LibraryRepository;
-import com.twu.biblioteca.view.LibraryView;
+import com.twu.biblioteca.repository.BookRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LibraryService {
+public class BookService {
 
-    private LibraryRepository libraryRepository;
+    private BookRepository libraryRepository;
 
-    public LibraryService(){
-        libraryRepository = new LibraryRepository();
+    public BookService(){
+        libraryRepository = new BookRepository();
     }
 
     public List<Book> listAllBooks(){

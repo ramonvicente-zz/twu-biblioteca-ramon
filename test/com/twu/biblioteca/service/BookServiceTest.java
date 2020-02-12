@@ -4,13 +4,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class LibraryServiceTest {
+public class BookServiceTest {
 
-    LibraryService libraryService;
+    BookService libraryService;
 
     @Before
     public void setUp(){
-        libraryService = new LibraryService();
+        libraryService = new BookService();
     }
 
     @Test
